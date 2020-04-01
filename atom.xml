@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://21ni.github.io/"/>
-  <updated>2020-04-01T05:41:54.743Z</updated>
+  <updated>2020-04-01T05:57:37.949Z</updated>
   <id>https://21ni.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF-Misc</title>
+    <link href="https://21ni.github.io/2020/04/01/ctf-misc/"/>
+    <id>https://21ni.github.io/2020/04/01/ctf-misc/</id>
+    <published>2020-03-31T23:37:43.000Z</published>
+    <updated>2020-04-01T05:57:37.949Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;本部分包含Misc的简介和encode的介绍，收集总结自CTF-wiki、维基百科，题目主要来源于Jarvis OJ，如有补充和意见请发送邮件至&lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CTF" scheme="https://21ni.github.io/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="https://21ni.github.io/tags/CTF/"/>
+    
+      <category term="Misc" scheme="https://21ni.github.io/tags/Misc/"/>
+    
+      <category term="基础" scheme="https://21ni.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>ctf入门</title>
