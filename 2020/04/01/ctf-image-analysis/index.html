@@ -317,7 +317,7 @@ Forensic Steganography（取证与隐写）大部分的 CTF 比赛中，取证�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -552,44 +552,39 @@ flag: PNG image data, 450 x 450, 8-bit grayscale, non-interlaced    </code></pre
     431 5duX@%</code></pre><h3 id="binwalk-命令"><a href="#binwalk-命令" class="headerlink" title="binwalk 命令"></a>binwalk 命令</h3><p>binwalk 本是一个固件的分析工具，比赛中常用来发现多个文件粘合再在一起的情况。根据文件头去识别一个文件中夹杂的其他文件，有时也会存在误报率（尤其是对 Pcap 流量包等文件时）。</p>
 <blockquote>
 <p>Binwalk 是一个快速，易于使用的工具，用于分析，逆向工程和提取固件映像。 官方给出的用途是提取固件镜像，然而，我们在做一些隐写类的题目的时候，Binwalk 这个工具非常方便。最好在 *nix 系统下使用，如果你的 Windows 版本是 1703 及以上，那么在 WSL 中安装 binwalk 是个不错的选择。</p>
-<pre><code>root in ~/Desktop/tmp λ binwalk flag</code></pre></blockquote>
-<h2 id="DECIMAL-HEXADECIMAL-DESCRIPTION"><a href="#DECIMAL-HEXADECIMAL-DESCRIPTION" class="headerlink" title="DECIMAL       HEXADECIMAL     DESCRIPTION"></a>DECIMAL       HEXADECIMAL     DESCRIPTION</h2><p>0             0x0             PNG image, 450 x 450, 8-bit grayscale, non-interlaced<br>134           0x86            Zlib compressed data, best compression<br>25683         0x6453          Zip archive data, at least v2.0 to extract, compressed size: 675, uncompressed size: 1159, name: readme.txt<br>26398         0x671E          Zip archive data, at least v2.0 to extract, compressed size: 430849, uncompressed size: 1027984, name: trid<br>457387        0x6FAAB         End of Zip archive</p>
-<pre><code>配合 -e 参数可以进行自动化提取。
+</blockquote>
+<pre><code>root in ~/Desktop/tmp λ binwalk flag
 
-也可以结合 dd 命令进行手动切割。</code></pre><p>root in ~/Desktop/tmp λ dd if=flag of=1.zip bs=1 skip=25683<br>431726+0 records in<br>431726+0 records out<br>431726 bytes (432 kB, 422 KiB) copied, 0.900973 s, 479 kB/s</p>
-<pre><code>如果你还指定了 -M 选项，binwalk 甚至会递归扫描文件，因为它会提取它们  
-如果指定了 -r 选项，则将自动删除无法提取的任何文件签名或导致大小为 0 的文件
-
-图像文件能够很好地包含黑客文化，因此 CTF 竞赛中经常会出现各种图像文件。
-
-图像文件有多种复杂的格式，可以用于各种涉及到元数据、信息丢失和无损压缩、校验、隐写或可视化数据编码的分析解密，都是 Misc 中的一个很重要的出题方向。涉及到的知识点很多（包括基本的文件格式，常见的隐写手法及隐写用的软件），有的地方也需要去进行深入的理解。
-
-# Introduction to Image Analysis
-## 元数据（Metadata）
-
-&gt; 元数据（Metadata），又称中介数据、中继数据，为描述数据的数据（Data about data），主要是描述数据属性（property）的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。
-
-元数据中隐藏信息在比赛中是最基本的一种手法，通常用来隐藏一些关键的 `Hint` 信息或者是一些重要的如 `password` 等信息。
-
-这类元数据你可以 `右键 --&gt; 属性` 去查看,也可以通过 `strings` 命令去查看，一般来说，一些隐藏的信息（奇怪的字符串）常常出现在头部或者尾部。
-
-接下来介绍一个 `identify` 命令，这个命令是用来获取一个或多个图像文件的格式和特性。
-
-`-format` 用来指定显示的信息，灵活使用它的 `-format` 参数可以给解题带来不少方便。[format各个参数具体意义](https://www.imagemagick.org/script/escape.php)
-
-### 例题
-
-[Break In 2017 - Mysterious GIF](https://github.com/ctfs/write-ups-2017/tree/master/breakin-ctf-2017/misc/Mysterious-GIF)
-
-这题的一个难点是发现并提取 GIF 中的元数据，首先 `strings` 是可以观察到异常点的。
-
-```shell
-GIF89a
-   !!!&quot;&quot;&quot;###$$$%%%&amp;&amp;&amp;&#39;&#39;&#39;((()))***+++,,,---...///000111222333444555666777888999:::;;;&lt;&lt;&lt;===&gt;&gt;&gt;???@@@AAABBBCCCDDDEEEFFFGGGHHHIIIJJJKKKLLLMMMNNNOOOPPPQQQRRRSSSTTTUUUVVVWWWXXXYYYZZZ[[[\\\]]]^^^___```aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz{{{|||}}}~~~
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 450 x 450, 8-bit grayscale, non-interlaced
+134           0x86            Zlib compressed data, best compression
+25683         0x6453          Zip archive data, at least v2.0 to extract, compressed size: 675, uncompressed size: 1159, name: readme.txt
+26398         0x671E          Zip archive data, at least v2.0 to extract, compressed size: 430849, uncompressed size: 1027984, name: trid
+457387        0x6FAAB         End of Zip archive</code></pre><p>配合 -e 参数可以进行自动化提取。</p>
+<p>也可以结合 dd 命令进行手动切割。</p>
+<pre><code>root in ~/Desktop/tmp λ dd if=flag of=1.zip bs=1 skip=25683
+431726+0 records in
+431726+0 records out
+431726 bytes (432 kB, 422 KiB) copied, 0.900973 s, 479 kB/s</code></pre><p>如果你还指定了 -M 选项，binwalk 甚至会递归扫描文件，因为它会提取它们<br>如果指定了 -r 选项，则将自动删除无法提取的任何文件签名或导致大小为 0 的文件</p>
+<p>图像文件能够很好地包含黑客文化，因此 CTF 竞赛中经常会出现各种图像文件。</p>
+<p>图像文件有多种复杂的格式，可以用于各种涉及到元数据、信息丢失和无损压缩、校验、隐写或可视化数据编码的分析解密，都是 Misc 中的一个很重要的出题方向。涉及到的知识点很多（包括基本的文件格式，常见的隐写手法及隐写用的软件），有的地方也需要去进行深入的理解。</p>
+<h1 id="Introduction-to-Image-Analysis"><a href="#Introduction-to-Image-Analysis" class="headerlink" title="Introduction to Image Analysis"></a>Introduction to Image Analysis</h1><h2 id="元数据（Metadata）"><a href="#元数据（Metadata）" class="headerlink" title="元数据（Metadata）"></a>元数据（Metadata）</h2><blockquote>
+<p>元数据（Metadata），又称中介数据、中继数据，为描述数据的数据（Data about data），主要是描述数据属性（property）的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。</p>
+</blockquote>
+<p>元数据中隐藏信息在比赛中是最基本的一种手法，通常用来隐藏一些关键的 <code>Hint</code> 信息或者是一些重要的如 <code>password</code> 等信息。</p>
+<p>这类元数据你可以 <code>右键 --&gt; 属性</code> 去查看,也可以通过 <code>strings</code> 命令去查看，一般来说，一些隐藏的信息（奇怪的字符串）常常出现在头部或者尾部。</p>
+<p>接下来介绍一个 <code>identify</code> 命令，这个命令是用来获取一个或多个图像文件的格式和特性。</p>
+<p><code>-format</code> 用来指定显示的信息，灵活使用它的 <code>-format</code> 参数可以给解题带来不少方便。<a href="https://www.imagemagick.org/script/escape.php" target="_blank" rel="noopener">format各个参数具体意义</a></p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><a href="https://github.com/ctfs/write-ups-2017/tree/master/breakin-ctf-2017/misc/Mysterious-GIF" target="_blank" rel="noopener">Break In 2017 - Mysterious GIF</a></p>
+<p>这题的一个难点是发现并提取 GIF 中的元数据，首先 <code>strings</code> 是可以观察到异常点的。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">GIF89a
+   !!!"""###$$$%%%&&&'''((()))***+++,,,---...///000111222333444555666777888999:::;;;<<<===>>>???@@@AAABBBCCCDDDEEEFFFGGGHHHIIIJJJKKKLLLMMMNNNOOOPPPQQQRRRSSSTTTUUUVVVWWWXXXYYYZZZ[[[\\\]]]^^^___```aaabbbcccdddeeefffggghhhiiijjjkkklllmmmnnnooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz{{{|||}}}~~~
 4d494945767749424144414e42676b71686b6947397730424151454641415343424b6b776767536c41674541416f4942415144644d4e624c3571565769435172
 NETSCAPE2.0
 ImageMagick
-...</code></pre><p>这里的一串16进制其实是藏在 GIF 的元数据区</p>
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里的一串16进制其实是藏在 GIF 的元数据区</p>
 <p>接下来就是提取，你可以选择 Python，但是利用 <code>identify</code> 显得更加便捷</p>
 <pre class="line-numbers language-shell"><code class="language-shell">root in ~/Desktop/tmp λ identify -format "%s %c \n" Question.gif
 0 4d494945767749424144414e42676b71686b6947397730424151454641415343424b6b776767536c41674541416f4942415144644d4e624c3571565769435172
@@ -836,7 +831,7 @@ im<span class="token punctuation">.</span>save<span class="token punctuation">(<
 <p>我们经常会去更改一张图片的高度或者宽度使得一张图片显示不完整从而达到隐藏信息的目的。</p>
 <p><img src="https://s1.ax1x.com/2020/04/01/G8gLu9.png" alt></p>
 <p>这里可以发现在 Kali 中是打不开这张图片的，提示 <code>IHDR CRC error</code>，而 Windows 10 自带的图片查看器能够打开，就提醒了我们 IHDR 块被人为的篡改过了，从而尝试修改图片的高度或者宽度发现隐藏的字符串。</p>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><h5 id="WDCTF-finals-2017"><a href="#WDCTF-finals-2017" class="headerlink" title="WDCTF-finals-2017"></a>WDCTF-finals-2017</h5><p>观察文件可以发现,文件头及宽度异常</p>
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><h5 id="WDCTF-finals-2017"><a href="#WDCTF-finals-2017" class="headerlink" title="WDCTF-finals-2017"></a>WDCTF-finals-2017</h5><p>观察文件可以发现,文件头及宽度异常</p>
 <pre class="line-numbers language-hex"><code class="language-hex">00000000  80 59 4e 47 0d 0a 1a 0a  00 00 00 0d 49 48 44 52  |.YNG........IHDR|
 00000010  00 00 00 00 00 00 02 f8  08 06 00 00 00 93 2f 8a  |............../.|
 00000020  6b 00 00 00 04 67 41 4d  41 00 00 9c 40 20 0d e4  |k....gAMA...@ ..|
@@ -913,7 +908,7 @@ result <span class="token operator">=</span> binascii<span class="token punctuat
 <p>通过下方的按钮可以观察每个通道的信息，例如查看 R 通道的最低位第 8 位平面的信息。</p>
 <p><img src="https://s1.ax1x.com/2020/04/01/G8gT9U.png" alt></p>
 <p>LSB 的信息借助于 Stegsolve 查看各个通道时一定要细心捕捉异常点，抓住 LSB 隐写的蛛丝马迹。</p>
-<h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><blockquote>
+<h3 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h3><blockquote>
 <p>HCTF - 2016 - Misc</p>
 </blockquote>
 <p>这题的信息隐藏在 RGB 三个通道的最低位中，借助 <code>Stegsolve--&gt;Analyse--&gt;Data Extract</code> 可以指定通道进行提取。</p>
@@ -1015,7 +1010,7 @@ i 检测图像中的信息是否是用invisible secrets嵌入的。<span aria-hi
 <pre class="line-numbers language-sourceCode"><code class="language-sourceCode">root in ~/Desktop/tmp λ convert cake.gif cake.png
 root in ~/Desktop/tmp λ ls
 cake-0.png  cake-1.png  cake-2.png  cake-3.png  cake.gif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h3><blockquote>
+<h3 id="例题-3"><a href="#例题-3" class="headerlink" title="例题"></a>例题</h3><blockquote>
 <p>WDCTF-2017:3-2</p>
 </blockquote>
 <p>打开gif后，思路很清晰，分离每一帧图片后，将起合并得到完整的二维码即可</p>
@@ -1209,7 +1204,7 @@ flag.save('./flag.png')<span aria-hidden="true" class="line-numbers-rows"><span>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CTF-Image Analysis">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CTF-Image Analysis">
                         
                         <span class="card-title">CTF-Image Analysis</span>
                     </div>
