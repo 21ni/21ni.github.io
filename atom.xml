@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://21ni.github.io/"/>
-  <updated>2020-04-03T04:44:34.993Z</updated>
+  <updated>2020-04-11T14:17:17.327Z</updated>
   <id>https://21ni.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Luckin Coffee</title>
+    <link href="https://21ni.github.io/2020/04/11/englishreading-1/"/>
+    <id>https://21ni.github.io/2020/04/11/englishreading-1/</id>
+    <published>2020-04-11T13:33:49.000Z</published>
+    <updated>2020-04-11T14:17:17.327Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近瑞幸咖啡似乎风波不断，没怎么了解过这件事，不作任何评价，单纯地阅读文章，学习新词汇。&lt;br&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="English" scheme="https://21ni.github.io/categories/English/"/>
+    
+    
+      <category term="English" scheme="https://21ni.github.io/tags/English/"/>
+    
+      <category term="reading" scheme="https://21ni.github.io/tags/reading/"/>
+    
+  </entry>
   
   <entry>
     <title>Traffic_Packet_Analysis</title>
