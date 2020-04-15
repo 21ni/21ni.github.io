@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>foreach与unset总结</title>
+      <link href="/2020/04/15/foreach-php/"/>
+      <url>/2020/04/15/foreach-php/</url>
+      
+        <content type="html"><![CDATA[<p>本文主要参考了<a href="https://www.jb51.net/article/39299.htm" target="_blank" rel="noopener">深入解析php中的foreach问题</a>和<a href="https://segmentfault.com/a/1190000015753252" target="_blank" rel="noopener">深入理解PHP之foreach</a>，两篇文章很很多相同之处，不过都没有使用最新的PHP版本，阅读起来有一定的困难，而且对PHP7中的foreach介绍很少。推荐先阅读<a href="http://www.imooc.com/article/291780" target="_blank" rel="noopener">php的foreach循环执行过程分析以及循环中执行unset()的一些问题</a>。这里还是采用PHP7的环境进行测试，所有代码均可正常运行。<br>ps：发现一个博文讲得也不错，对原理有深入的讲解，涉及一定量的编译原理知识。同时，博主是PHP开发组的核心成员，PHP7的核心作者，有兴趣的可以看一下。<a href="https://www.laruence.com/2008/11/20/630.html" target="_blank" rel="noopener">深入理解PHP原理之foreach</a></p><h1 id="值遍历的foreach"><a href="#值遍历的foreach" class="headerlink" title="值遍历的foreach"></a>值遍历的foreach</h1><p>PHP5和PHP7中foreach的区别：  </p><ul><li>PHP7升级手册中提到“foreach 通过值遍历时，操作的值为数组的副本. 当默认使用通过值遍历数组时，foreach 实际操作的是数组的迭代副本，而非数组本身。”不过需要注意的是当循环结束之后，副本会重新赋值给数组,所以当我们打印foreach循环后的数组会返回赋值后的数组。这样说有些抽象，不如看个例子:</li></ul><pre><code>&lt;?php    $a = array(&quot;p&quot;,&quot;h&quot;,&quot;f&quot;);    foreach($a as $val)    {        echo $val;        unset($a[1]);    }    foreach($a as $val)    {        echo $val;    }?&gt;</code></pre><p>运行结果：<br>phfpf</p><p>值遍历的特点：</p><ul><li>foreach循环的时候，确实是复制了一份$arr，循环的是这个副本</li><li>当循环结束之后，副本会重新赋值给$arr,所以我们打印循环后的$arr会返回赋值后的数组</li><li>php7在循环的时候，并没有影响到数组的指针，指针并不是像php5一样停留在最后一个值的右侧。php7的指针仍旧指向数组的第一位。</li><li>在对数组按值迭代时，foreach 总是在对数组副本进行操作，在迭代中任何对数组的操作都不会影响到迭代行为<h1 id="引用遍历的情况"><a href="#引用遍历的情况" class="headerlink" title="引用遍历的情况"></a>引用遍历的情况</h1>这种情况比较复杂，出现的问题也很多，这里简单说明最典型的一种。</li></ul><pre><code>$arr = array(1,2,3);foreach($arr as $k =&gt; &amp;$v) {    $v = $v * 2;}// now $arr is array(2, 4, 6)foreach($arr as $k =&gt; $v) {    echo &quot;$k&quot;, &quot; =&gt; &quot;, &quot;$v&quot;;}</code></pre><p>运行结果：<br>0 =&gt; 2 1 =&gt; 4 2 =&gt; 4<br>这里第三个结果明显不符合我们的预期，这是由于 “数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留”。也就是说当第一个foreach结束之后，v依然存在，$v仍然是$arr[2]的引用。这里foreach结构可以视为隐含了以下操作：</p><pre><code>foreach($arr as $k =&gt; $v){     //在用户代码执行之前隐含了2个赋值操作    $v = currentVal();     $k = currentKey();    //继续运行用户代码    ……}</code></pre><p>第二个foreach中：<br>第1遍循环，隐含操作$v=$arr[0]被触发，由于此时$v仍然是$arr[2]的引用，  即相当于$arr[2]=$arr[0]，$arr变成2,4,2<br>第2遍循环，$v=$arr[1]，即$arr[2]=$arr[1]，$arr变成2,4,4<br>第3遍循环，$v=$arr[2]，即$arr[2]=$arr[2]，$arr变成2,4,4  </p><p>解决方案：<br>数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留。建议使用unset()来将其销毁。（PHP手册）</p><p>引用遍历的特点：</p><ul><li>数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留。</li><li>按照引用进行循环的时候，对数组的修改会影响循环<h1 id="引用遍历与unset"><a href="#引用遍历与unset" class="headerlink" title="引用遍历与unset"></a>引用遍历与unset</h1></li></ul><pre><code>    $a = [3,4,5];    foreach ($a as $key =&gt; &amp;$val){        if($val == 4){            unset($val);        }    }    //3,4,5    print_r($a);    echo&quot;&lt;br /&gt;&quot;;    foreach ($a as $key =&gt; $val){        if($val == 4){            unset($val[$key]);        }    }    print_r($a);    // [3,4,4]</code></pre><p>输出结果：<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )  </p><p>如果在函数中 unset() 一个通过引用传递的变量，则只是局部变量被销毁，而在调用环境中的变量将保持调用 unset() 之前一样的值。  所以这里unset()销毁的是局部变量，并不影响原数组的值<br>而在第二个foreach中，又出现了由于val未被销毁而产生的问题，分析过程和引用遍历中的相同。</p><h1 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h1><pre><code>    $array=array(1,2,3);    foreach($array as $key =&gt; $value){        $value *= 2;    }    //直接对$value进行操作时，是不会产生影响的    foreach($array as $val)    {        echo $val;    }</code></pre><p>如果有错误欢迎指正。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> PHP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结整理 </tag>
+            
+            <tag> PHP </tag>
+            
+            <tag> foreach </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Luckin Coffee</title>
       <link href="/2020/04/11/englishreading-1/"/>
       <url>/2020/04/11/englishreading-1/</url>
