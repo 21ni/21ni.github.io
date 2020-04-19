@@ -578,7 +578,7 @@ foreach($arr as $k =&gt; $v) {
     }
 
     print_r($a);
-    // [3,4,4]</code></pre><p>输出结果：<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )  </p>
+    // [3,4,4]</code></pre><p>输出结果：<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 4 )  </p>
 <p>如果在函数中 unset() 一个通过引用传递的变量，则只是局部变量被销毁，而在调用环境中的变量将保持调用 unset() 之前一样的值。  所以这里unset()销毁的是局部变量，并不影响原数组的值<br>而在第二个foreach中，又出现了由于val未被销毁而产生的问题，分析过程和引用遍历中的相同。</p>
 <h1 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h1><pre><code>    $array=array(1,2,3);
 
@@ -790,55 +790,53 @@ foreach($arr as $k =&gt; $v) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/15/foreach-php/">
+                <a href="/2020/04/19/englishreading-2/">
                     <div class="card-image">
                         
-                        <img src="https://s1.ax1x.com/2020/04/14/GxB6zt.jpg" class="responsive-img" alt="foreach与unset总结">
+                        <img src="https://s1.ax1x.com/2020/04/19/JuZh6I.png" class="responsive-img" alt="转载-“这辈子都不可能打工运动”发起人--窃格瓦拉出狱">
                         
-                        <span class="card-title">foreach与unset总结</span>
+                        <span class="card-title">转载-“这辈子都不可能打工运动”发起人--窃格瓦拉出狱</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PHP中的foreach是很容易出错的一个知识点，尤其是在foreach中对数组进行处理时，与其他语言有很大的不同，如果又涉及unset对数组进行处理，极容易混淆。这里简单做个记录，以备不时之需。
+                            在公众号《经济学人外刊社》看到的一篇文章，挺有意思的，看的时候忍不住笑出了声,当然也会有英语单词的学习，很不错的文章。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/PHP/" class="post-category" target="_blank">
-                                    PHP
+                            <a href="/categories/English/" class="post-category" target="_blank">
+                                    English
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/总结整理/" target="_blank">
-                        <span class="chip bg-color">总结整理</span>
+                    <a href="/tags/English/" target="_blank">
+                        <span class="chip bg-color">English</span>
                     </a>
                     
-                    <a href="/tags/PHP/" target="_blank">
-                        <span class="chip bg-color">PHP</span>
+                    <a href="/tags/reading/" target="_blank">
+                        <span class="chip bg-color">reading</span>
                     </a>
                     
-                    <a href="/tags/foreach/" target="_blank">
-                        <span class="chip bg-color">foreach</span>
+                    <a href="/tags/转载/" target="_blank">
+                        <span class="chip bg-color">转载</span>
                     </a>
                     
                 </div>
@@ -1038,25 +1036,6 @@ foreach($arr as $k =&gt; $v) {
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-<!-- 代码语言 -->
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-<!-- 代码块复制 -->
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-<script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
-<!-- 代码块收缩 -->
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
-<!-- 代码块折行 -->
-<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-
-
     <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1064,7 +1043,7 @@ foreach($arr as $k =&gt; $v) {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">22.9k</span>
+            <span class="white-color">25.3k</span>
             
 
             <br>

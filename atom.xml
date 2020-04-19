@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://21ni.github.io/"/>
-  <updated>2020-04-15T13:02:18.883Z</updated>
+  <updated>2020-04-19T01:19:05.853Z</updated>
   <id>https://21ni.github.io/</id>
   
   <author>
@@ -17,11 +17,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>转载-“这辈子都不可能打工运动”发起人--窃格瓦拉出狱</title>
+    <link href="https://21ni.github.io/2020/04/19/englishreading-2/"/>
+    <id>https://21ni.github.io/2020/04/19/englishreading-2/</id>
+    <published>2020-04-19T00:38:21.000Z</published>
+    <updated>2020-04-19T01:19:05.853Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;style type=&quot;text/css&quot;&gt;
+span{
+   color:red;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/rVTOIDPq3Ojq3do2angRTw&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="English" scheme="https://21ni.github.io/categories/English/"/>
+    
+    
+      <category term="English" scheme="https://21ni.github.io/tags/English/"/>
+    
+      <category term="reading" scheme="https://21ni.github.io/tags/reading/"/>
+    
+      <category term="转载" scheme="https://21ni.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>foreach与unset总结</title>
     <link href="https://21ni.github.io/2020/04/15/foreach-php/"/>
     <id>https://21ni.github.io/2020/04/15/foreach-php/</id>
     <published>2020-04-15T12:58:51.000Z</published>
-    <updated>2020-04-15T13:02:18.883Z</updated>
+    <updated>2020-04-18T23:08:15.419Z</updated>
     
     <summary type="html">
     
