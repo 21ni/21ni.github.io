@@ -489,7 +489,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    934
+                    930
                 </div>
                 
 
@@ -583,8 +583,8 @@
 目录
 ## 标题 1
 ### 标题 1.1</code></pre><h4 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h4><ul>
-<li>粗体：** 加粗文本 **<br>快捷键：Ctr+B</li>
-<li>斜体：* 斜体文本 *<br>快捷键：Ctr+I</li>
+<li>粗体：** 加粗文本、<em>\</em><br>快捷键：Ctr+B</li>
+<li>斜体：* 斜体文本、*<br>快捷键：Ctr+I</li>
 </ul>
 <h3 id="段落与换行"><a href="#段落与换行" class="headerlink" title="段落与换行"></a>段落与换行</h3><ul>
 <li><p>行与行之间没有空行（一行中只有制表符和空格），就会被视为同一段落。</p>
@@ -609,7 +609,7 @@
 <li>本地图片地址使用的是相对路径</li>
 </ul>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><pre><code>[文字](链接)</code></pre><h3 id="行内代码与代码块"><a href="#行内代码与代码块" class="headerlink" title="行内代码与代码块"></a>行内代码与代码块</h3><ul>
-<li>行内代码<br>`代码 `</li>
+<li>行内代码<br>`代码、`</li>
 <li>代码块<br>```<br>代码块<br>```</li>
 </ul>
 <h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>&gt;+ 空格 + 引用内容</p>
@@ -618,38 +618,19 @@
 <li>建议引用中的每一行开头都使用 &gt;</li>
 </ul>
 <h2 id="拓展语法-GFM"><a href="#拓展语法-GFM" class="headerlink" title="拓展语法 GFM"></a>拓展语法 GFM</h2><ul>
-<li><p>删除线<br>~~ 被删除线的内容 ~~</p>
+<li><p>删除线<br>~~ 被删除线的内容、<del>\</del></p>
 </li>
 <li><p><a href="https://juejin.im/post/5e0aa7a55188254958275de3" target="_blank" rel="noopener">表情符号</a><br>仅在 Markdown Preview Enhanced 的预览窗口可见</p>
 </li>
 <li><p>表格  </p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>内容</td>
-<td>内容</td>
-</tr>
-<tr>
-<td>名字</td>
-<td>年龄</td>
-</tr>
-<tr>
-<td>:—:</td>
-<td>:—:</td>
-</tr>
-<tr>
-<td>小明</td>
-<td>12</td>
-</tr>
-</tbody></table>
 </li>
-<li><p>锚点<br>[1](#+ 标题名)<br>标题名在 vscode 中只对数字和英文有较好的支持</p>
-</li>
+</ul>
+<pre><code>| 内容  | 内容  |  
+| ----- | ----- |
+| 名字  | 年龄  |  
+| :---: | :---: |  
+| 小明  | 12    |  </code></pre><ul>
+<li>锚点<br>[1](#+ 标题名)<br>标题名在 vscode 中只对数字和英文有较好的支持</li>
 </ul>
 <h2 id="排版小技巧"><a href="#排版小技巧" class="headerlink" title="排版小技巧"></a>排版小技巧</h2><ul>
 <li><p>加空格</p>
@@ -686,7 +667,7 @@ _   底线
 +   加号
 -   减号
 .   英文句点
-!   惊叹号</code></pre><p>需要使用 \+ 符号进行转义。</p>
+!   惊叹号</code></pre><p>需要使用、+ 符号进行转义。</p>
 <h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/56699805" target="_blank" rel="noopener">在 VSCode 下用 Markdown Preview Enhanced 愉快地写文档</a></li>
 <li><a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/" target="_blank" rel="noopener">Markdown Preview Enhanced</a></li>
