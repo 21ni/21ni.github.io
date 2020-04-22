@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://21ni.github.io/"/>
-  <updated>2020-04-19T01:19:05.853Z</updated>
+  <updated>2020-04-22T10:05:47.885Z</updated>
   <id>https://21ni.github.io/</id>
   
   <author>
@@ -17,7 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>转载-“这辈子都不可能打工运动”发起人--窃格瓦拉出狱</title>
+    <title>《了不起的 markdown》阅读记录</title>
+    <link href="https://21ni.github.io/2020/04/22/markdown/"/>
+    <id>https://21ni.github.io/2020/04/22/markdown/</id>
+    <published>2020-04-22T09:47:36.000Z</published>
+    <updated>2020-04-22T10:05:47.885Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;《了不起的-Markdown》阅读记录&quot;&gt;&lt;a href=&quot;#《了不起的-Markdown》阅读记录&quot; class=&quot;headerlink&quot; title=&quot;《了不起的 Markdown》阅读记录&quot;&gt;&lt;/a&gt;《了不起的
+        
+      
+    
+    </summary>
+    
+      <category term="Markdown" scheme="https://21ni.github.io/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="https://21ni.github.io/tags/Markdown/"/>
+    
+      <category term="读书记录" scheme="https://21ni.github.io/tags/%E8%AF%BB%E4%B9%A6%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>转载 -“这辈子都不可能打工运动” 发起人 -- 窃格瓦拉出狱</title>
     <link href="https://21ni.github.io/2020/04/19/englishreading-2/"/>
     <id>https://21ni.github.io/2020/04/19/englishreading-2/</id>
     <published>2020-04-19T00:38:21.000Z</published>
@@ -30,7 +58,7 @@
         
         
           &lt;style type=&quot;text/css&quot;&gt;
-span{
+span {
    color:red;
 }
 &lt;/style&gt;
@@ -53,11 +81,11 @@ span{
   </entry>
   
   <entry>
-    <title>foreach与unset总结</title>
+    <title>foreach 与 unset 总结</title>
     <link href="https://21ni.github.io/2020/04/15/foreach-php/"/>
     <id>https://21ni.github.io/2020/04/15/foreach-php/</id>
     <published>2020-04-15T12:58:51.000Z</published>
-    <updated>2020-04-18T23:08:15.419Z</updated>
+    <updated>2020-04-19T01:34:14.111Z</updated>
     
     <summary type="html">
     
@@ -65,7 +93,7 @@ span{
       
         
         
-          &lt;p&gt;本文主要参考了&lt;a href=&quot;https://www.jb51.net/article/39299.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;深入解析php中的foreach问题&lt;/a&gt;和&lt;a
+          &lt;p&gt;本文主要参考了 &lt;a href=&quot;https://www.jb51.net/article/39299.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;深入解析 php 中的 foreach 问题&lt;/a&gt; 和 &lt;a
         
       
     
@@ -123,7 +151,7 @@ span{
       
         
         
-          &lt;p&gt;写在前面：本文的大部分内容都源于CTF-WIKI、维基百科和网络，如有补充和意见请发送邮件至&lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
+          &lt;p&gt;写在前面：本文的大部分内容都源于 CTF-WIKI、维基百科和网络，如有补充和意见请发送邮件至 &lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
         
       
     
@@ -153,7 +181,7 @@ span{
       
         
         
-          &lt;p&gt;写在前面：本文的大部分内容都源于CTF-WIKI、维基百科和网络，如有补充和意见请发送邮件至&lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
+          &lt;p&gt;写在前面：本文的大部分内容都源于 CTF-WIKI、维基百科和网络，如有补充和意见请发送邮件至 &lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
         
       
     
@@ -183,7 +211,7 @@ span{
       
         
         
-          &lt;p&gt;本部分包含Misc的简介和encode的介绍，收集总结自CTF-wiki、维基百科，题目主要来源于Jarvis OJ，如有补充和意见请发送邮件至&lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
+          &lt;p&gt;本部分包含 Misc 的简介和 encode 的介绍，收集总结自 CTF-wiki、维基百科，题目主要来源于 Jarvis OJ，如有补充和意见请发送邮件至 &lt;a href=&quot;mailto:1316565360@qq.com&quot; target=&quot;_blank&quot;
         
       
     
@@ -201,7 +229,7 @@ span{
   </entry>
   
   <entry>
-    <title>ctf入门</title>
+    <title>ctf 入门</title>
     <link href="https://21ni.github.io/2020/03/31/ctf-summary/"/>
     <id>https://21ni.github.io/2020/03/31/ctf-summary/</id>
     <published>2020-03-31T06:19:00.000Z</published>
@@ -214,7 +242,7 @@ span{
         
         
           &lt;p&gt;以下资料来源于互联网&lt;/p&gt;
-&lt;h1 id=&quot;什么是CTF&quot;&gt;&lt;a href=&quot;#什么是CTF&quot; class=&quot;headerlink&quot; title=&quot;什么是CTF&quot;&gt;&lt;/a&gt;什么是CTF&lt;/h1&gt;&lt;p&gt;CTF（ Capture The Flag） 中文一般译作夺旗赛，
+&lt;h1 id=&quot;什么是-CTF&quot;&gt;&lt;a href=&quot;#什么是-CTF&quot; class=&quot;headerlink&quot; title=&quot;什么是 CTF&quot;&gt;&lt;/a&gt;什么是 CTF&lt;/h1&gt;&lt;p&gt;CTF（ Capture The Flag）
         
       
     
@@ -232,7 +260,7 @@ span{
   </entry>
   
   <entry>
-    <title>github搭建个人博客</title>
+    <title>github 搭建个人博客</title>
     <link href="https://21ni.github.io/2020/03/30/github-personpage/"/>
     <id>https://21ni.github.io/2020/03/30/github-personpage/</id>
     <published>2020-03-30T11:22:31.000Z</published>
@@ -244,7 +272,7 @@ span{
       
         
         
-          &lt;h2 id=&quot;参考到的博客和资料&quot;&gt;&lt;a href=&quot;#参考到的博客和资料&quot; class=&quot;headerlink&quot; title=&quot;参考到的博客和资料&quot;&gt;&lt;/a&gt;参考到的博客和资料&lt;/h2&gt;&lt;p&gt;主要参考”超详细Hexo+Github博客搭建小白教程”：&lt;a
+          &lt;h2 id=&quot;参考到的博客和资料&quot;&gt;&lt;a href=&quot;#参考到的博客和资料&quot; class=&quot;headerlink&quot; title=&quot;参考到的博客和资料&quot;&gt;&lt;/a&gt;参考到的博客和资料&lt;/h2&gt;&lt;p&gt;主要参考 “超详细 Hexo+Github 博客搭建小白教程”：&lt;a
         
       
     
