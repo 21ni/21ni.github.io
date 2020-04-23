@@ -520,19 +520,20 @@
 <ul>
 <li>PHP7 升级手册中提到 “foreach 通过值遍历时，操作的值为数组的副本。当默认使用通过值遍历数组时，foreach 实际操作的是数组的迭代副本，而非数组本身。” 不过需要注意的是当循环结束之后，副本会重新赋值给数组，所以当我们打印 foreach 循环后的数组会返回赋值后的数组。这样说有些抽象，不如看个例子:</li>
 </ul>
-<pre><code>&lt;?php
-    $a = array (&quot;p&quot;,&quot;h&quot;,&quot;f&quot;);
-    foreach ($a as $val)
-    {
-        echo $val;
-        unset ($a [1]);
-    }
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span> <span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">,</span><span class="token string">"h"</span><span class="token punctuation">,</span><span class="token string">"f"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$val</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token variable">$val</span><span class="token punctuation">;</span>
+        <span class="token function">unset</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    foreach ($a as $val)
-    {
-        echo $val;
-    }
-?&gt;</code></pre><p>运行结果：<br>phfpf</p>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$val</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token variable">$val</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：<br>phfpf</p>
 <p>值遍历的特点：</p>
 <ul>
 <li>foreach 循环的时候，确实是复制了一份 $arr，循环的是这个副本</li>
@@ -540,56 +541,60 @@
 <li>php7 在循环的时候，并没有影响到数组的指针，指针并不是像 php5 一样停留在最后一个值的右侧。php7 的指针仍旧指向数组的第一位。</li>
 <li>在对数组按值迭代时，foreach 总是在对数组副本进行操作，在迭代中任何对数组的操作都不会影响到迭代行为<h1 id="引用遍历的情况"><a href="#引用遍历的情况" class="headerlink" title="引用遍历的情况"></a>引用遍历的情况</h1>这种情况比较复杂，出现的问题也很多，这里简单说明最典型的一种。</li>
 </ul>
-<pre><code>$arr = array (1,2,3);
-foreach ($arr as $k =&gt; &amp;$v) {
-    $v = $v * 2;
-}
-//now $arr is array (2, 4, 6)
-foreach ($arr as $k =&gt; $v) {
-    echo &quot;$k&quot;, &quot;=&gt;&quot;, &quot;$v&quot;;
-}</code></pre><p>运行结果：<br>0 =&gt; 2 1 =&gt; 4 2 =&gt; 4<br>这里第三个结果明显不符合我们的预期，这是由于 “数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留”。也就是说当第一个 foreach 结束之后，v 依然存在，$v 仍然是 $arr [2] 的引用。这里 foreach 结构可以视为隐含了以下操作：</p>
-<pre><code>foreach ($arr as $k =&gt; $v){ 
-    // 在用户代码执行之前隐含了 2 个赋值操作
-    $v = currentVal (); 
-    $k = currentKey ();
-    // 继续运行用户代码
+<pre class="line-numbers language-php"><code class="language-php"><span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token keyword">array</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$arr</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span><span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$v</span> <span class="token operator">=</span> <span class="token variable">$v</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//now $arr is array (2, 4, 6)</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$arr</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string">"$k"</span><span class="token punctuation">,</span> <span class="token string">"=>"</span><span class="token punctuation">,</span> <span class="token string">"$v"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：<br>0 =&gt; 2 1 =&gt; 4 2 =&gt; 4<br>这里第三个结果明显不符合我们的预期，这是由于 “数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留”。也就是说当第一个 foreach 结束之后，v 依然存在，$v 仍然是 $arr [2] 的引用。这里 foreach 结构可以视为隐含了以下操作：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$arr</span> <span class="token keyword">as</span> <span class="token variable">$k</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$v</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+    <span class="token comment" spellcheck="true">// 在用户代码执行之前隐含了 2 个赋值操作</span>
+    <span class="token variable">$v</span> <span class="token operator">=</span> <span class="token function">currentVal</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token variable">$k</span> <span class="token operator">=</span> <span class="token function">currentKey</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 继续运行用户代码</span>
     ……
-}</code></pre><p>第二个 foreach 中：<br>第 1 遍循环，隐含操作 $v=$arr [0] 被触发，由于此时 $v 仍然是 $arr [2] 的引用，  即相当于 $arr [2]=$arr [0]，$arr 变成 2,4,2<br>第 2 遍循环，$v=$arr [1]，即 $arr [2]=$arr [1]，$arr 变成 2,4,4<br>第 3 遍循环，$v=$arr [2]，即 $arr [2]=$arr [2]，$arr 变成 2,4,4  </p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第二个 foreach 中：<br>第 1 遍循环，隐含操作 $v=$arr [0] 被触发，由于此时 $v 仍然是 $arr [2] 的引用，  即相当于 $arr [2]=$arr [0]，$arr 变成 2,4,2<br>第 2 遍循环，$v=$arr [1]，即 $arr [2]=$arr [1]，$arr 变成 2,4,4<br>第 3 遍循环，$v=$arr [2]，即 $arr [2]=$arr [2]，$arr 变成 2,4,4  </p>
 <p>解决方案：<br>数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留。建议使用 unset () 来将其销毁。（PHP 手册）</p>
 <p>引用遍历的特点：</p>
 <ul>
 <li>数组最后一个元素的 $value 引用在 foreach 循环之后仍会保留。</li>
 <li>按照引用进行循环的时候，对数组的修改会影响循环<h1 id="引用遍历与-unset"><a href="#引用遍历与-unset" class="headerlink" title="引用遍历与 unset"></a>引用遍历与 unset</h1></li>
 </ul>
-<pre><code>    $a = [3,4,5];
-    foreach ($a as $key =&gt; &amp;$val){
-        if ($val == 4){
-            unset ($val);
-        }
-    }
-    //3,4,5
-    print_r ($a);
-    echo&quot;&lt;br /&gt;&quot;;
+<pre class="line-numbers language-php"><code class="language-php">    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span><span class="token variable">$val</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$val</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">unset</span> <span class="token punctuation">(</span><span class="token variable">$val</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//3,4,5</span>
+    <span class="token function">print_r</span> <span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span><span class="token string">"&lt;br />"</span><span class="token punctuation">;</span>
 
-    foreach ($a as $key =&gt; $val){
-        if ($val == 4){
-            unset ($val [$key]);
-        }
-    }
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$val</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$val</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">unset</span> <span class="token punctuation">(</span><span class="token variable">$val</span> <span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    print_r ($a);
-    // [3,4,4]</code></pre><p>输出结果：<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 4 )  </p>
+    <span class="token function">print_r</span> <span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// [3,4,4]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 5 )<br>Array ( [0] =&gt; 3 [1] =&gt; 4 [2] =&gt; 4 )  </p>
 <p>如果在函数中 unset () 一个通过引用传递的变量，则只是局部变量被销毁，而在调用环境中的变量将保持调用 unset () 之前一样的值。  所以这里 unset () 销毁的是局部变量，并不影响原数组的值<br>而在第二个 foreach 中，又出现了由于 val 未被销毁而产生的问题，分析过程和引用遍历中的相同。</p>
-<h1 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h1><pre><code>    $array=array (1,2,3);
+<h1 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h1><pre class="line-numbers language-php"><code class="language-php">    <span class="token variable">$array</span><span class="token operator">=</span><span class="token keyword">array</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    foreach ($array as $key =&gt; $value){
-        $value *= 2;
-    }
-    // 直接对 $value 进行操作时，是不会产生影响的
-    foreach ($array as $val)
-    {
-        echo $val;
-    }</code></pre><p>如果有错误欢迎指正。</p>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$array</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$value</span> <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 直接对 $value 进行操作时，是不会产生影响的</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$array</span> <span class="token keyword">as</span> <span class="token variable">$val</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token variable">$val</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果有错误欢迎指正。</p>
 
             </div>
             <hr />
