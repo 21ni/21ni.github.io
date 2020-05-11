@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://21ni.github.io/"/>
-  <updated>2020-04-23T00:43:52.449Z</updated>
+  <updated>2020-05-11T11:32:21.316Z</updated>
   <id>https://21ni.github.io/</id>
   
   <author>
@@ -17,11 +17,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Git</title>
+    <link href="https://21ni.github.io/2020/05/11/git/"/>
+    <id>https://21ni.github.io/2020/05/11/git/</id>
+    <published>2020-05-11T10:05:59.000Z</published>
+    <updated>2020-05-11T11:32:21.316Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Git-使用指南&quot;&gt;&lt;a href=&quot;#Git-使用指南&quot; class=&quot;headerlink&quot; title=&quot;Git 使用指南&quot;&gt;&lt;/a&gt;Git 使用指南&lt;/h1&gt;&lt;p&gt;因为搭建博客的时候，用到了 Git，但实际上自己对 Git
+        
+      
+    
+    </summary>
+    
+      <category term="Git" scheme="https://21ni.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="https://21ni.github.io/tags/Git/"/>
+    
+      <category term="study" scheme="https://21ni.github.io/tags/study/"/>
+    
+      <category term="整理" scheme="https://21ni.github.io/tags/%E6%95%B4%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>总随笔</title>
+    <link href="https://21ni.github.io/2020/04/26/essay-1/"/>
+    <id>https://21ni.github.io/2020/04/26/essay-1/</id>
+    <published>2020-04-26T07:37:31.000Z</published>
+    <updated>2020-05-11T10:05:30.249Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;《历史深处的忧虑：近距离看美国一》是林达先生和他朋友的书信集。也正是因为如此，文字显得平易近人而又有热情，读起来不觉得枯燥乏味，反倒像真的有这样一个去美国的朋友一样。但书信并不是在寒暄问暖，更多的部分在于讨论美国的自由以及自由的代价。因为是书信的缘故，书中不是抽象的理论，而
+        
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://21ni.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://21ni.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="日常" scheme="https://21ni.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《了不起的 markdown》阅读记录</title>
     <link href="https://21ni.github.io/2020/04/22/markdown/"/>
     <id>https://21ni.github.io/2020/04/22/markdown/</id>
     <published>2020-04-22T09:47:36.000Z</published>
-    <updated>2020-04-23T00:43:52.449Z</updated>
+    <updated>2020-05-11T09:51:52.188Z</updated>
     
     <summary type="html">
     
@@ -264,7 +322,7 @@ span {
     <link href="https://21ni.github.io/2020/03/30/github-personpage/"/>
     <id>https://21ni.github.io/2020/03/30/github-personpage/</id>
     <published>2020-03-30T11:22:31.000Z</published>
-    <updated>2020-04-03T02:07:18.424Z</updated>
+    <updated>2020-05-11T08:44:44.935Z</updated>
     
     <summary type="html">
     
